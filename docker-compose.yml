@@ -1,0 +1,22 @@
+version: "1.0"
+services:
+  serverProverif:
+    image: dbcchecker:1.0
+    build:
+      context: .
+    container_name: dbccheckerWevApp
+    networks: 
+      net:
+          ipv4_address: 172.18.0.2
+    expose:
+      - "8082"
+    ports:
+      - 8082:3000
+    stop_grace_period: 5s
+    stop_signal: SIGTERM
+networks: 
+  net:
+    ipam:
+      driver: default
+      config:
+        - subnet: "172.18.0.0/16"
