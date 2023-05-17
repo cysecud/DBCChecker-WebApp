@@ -2,7 +2,7 @@ FROM node:20.1-alpine
 
 WORKDIR /app
 
-ADD myapp/build/ .
+ADD dbcchecker/build/ .
 COPY ./package.json .
 
 EXPOSE 3000
