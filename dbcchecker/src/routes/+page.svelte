@@ -12,9 +12,14 @@
 <section>
 	<h1>
 		<span class="logo">
-			<picture>
+			<!-- svelte-ignore a11y-media-has-caption -->
+			<video autoplay>
+				<source src={logo} type="video/mp4">
+				<!-- <source src="movie.ogg" type="video/ogg"> -->
+			</video>
+			<!-- <picture>
 				<img src={logo} alt={appName}/>
-			</picture>
+			</picture> -->
 		</span>
 		a Container Composition<br/>Checking Tool
 	</h1>
@@ -41,7 +46,16 @@
 
 	}
 
-	.logo img {
+	/* .logo img {
+		position: relative;
+		width: 40%;
+		height: 40%;
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+	} */
+
+	.logo video {
 		position: relative;
 		width: 40%;
 		height: 40%;
