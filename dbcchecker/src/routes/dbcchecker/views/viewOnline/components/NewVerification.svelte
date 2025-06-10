@@ -2,6 +2,9 @@
     import ButtonComponent from "$lib/widget/button.svelte";
     import {
         verificationTypeBoth,
+        verificationTypeText,
+        verificationTypeHtml,
+        verificationTypeNone,
         checkModelsUploadedNoData,
         suffixNameInputFile,
         authExtensionFile,
@@ -15,6 +18,9 @@
 
     /** @type {any} */
     let filesIntegrative;
+
+    let textVerification = true;
+    let htmlVerification = true;
 
     var modelName = "";
     var fileName = "";
@@ -31,6 +37,18 @@
     var resultHtml = "";
     var resultText = "";
 
+    const verificationType = () => {
+        if (textVerification && htmlVerification) {
+            return verificationTypeBoth;
+        } else if (textVerification) {
+            return verificationTypeText;
+        } else if (htmlVerification) {
+            return verificationTypeHtml;
+        } else {
+            return verificationTypeNone;
+        }
+    }
+
     async function submit() {
         prepareInput();
         try {
@@ -44,7 +62,7 @@
                         "Allow-Access-Control-Origin": "*",
                     },
                     body: JSON.stringify({
-                        VerificationType: verificationTypeBoth,
+                        VerificationType: verificationType(),
                         DataJsonBigraph: jbfFileContent,
                         DataJsonIntegrative: integrativeFileContent,
                     }),
@@ -162,6 +180,24 @@
                 bind:files={filesIntegrative}
                 on:change={() => readIntegrativeFile(filesIntegrative[0])}
             />
+            <label for="textReportNewVerify" class="opInputLabel"
+                >Text report</label
+            >
+            <input
+                id="textReportNewVerify"
+                class="opInputFormText"
+                type="checkbox"
+                bind:checked={textVerification}
+            />
+            <label for="htmlReportNewVerify" class="opInputLabel"
+                >Html report</label
+            >
+            <input
+                id="htmlReportNewVerify"
+                class="opInputFormText"
+                type="checkbox"
+                bind:checked={htmlVerification}
+            />
         </form>
 
         <ButtonComponent on:click={submit} text="Submit" />
@@ -173,8 +209,8 @@
         {:else}
             <p><b>Model:</b> {modelName}</p>
             <div class="opResultColumn">
-                <ButtonComponent on:click={open} text="Open Results" />
-                <ButtonComponent on:click={save} text="Save Results" />
+                <ButtonComponent on:click={open} text="Open HTML Results" />
+                <ButtonComponent on:click={save} text="Save Text Results" />
             </div>
         {/if}
     </div>

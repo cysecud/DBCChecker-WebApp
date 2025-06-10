@@ -136,7 +136,7 @@ button:focus:not(:focus-visible) {
 
 .opForm {
 	display: grid;
-	grid-template-columns: 30% 70%;
+	grid-template-columns: 35% 65%;
 	grid-column-gap: 5%;
 }
 .opInputFormText {

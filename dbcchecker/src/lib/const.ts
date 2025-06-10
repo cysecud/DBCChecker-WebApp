@@ -21,6 +21,8 @@ export const urlHost = "http://localhost:8080"
 export const urlCheckModelsUploaded = urlHost + "/models"
 
 export const verificationTypeBoth = "both";
-
+export const verificationTypeText = "text";
+export const verificationTypeHtml = "html";
+export const verificationTypeNone = "none";
 
 export const buttonSubmit = "Submit"

@@ -188,8 +188,8 @@
             <p><b>Model:</b> {modelName}</p>
             <div class="opResultColumn">
                 <ButtonComponent on:click={saveInputText} text="Save Proverif File" />
-                <ButtonComponent on:click={openOutputHtml} text="Open Proverif Result" />
-                <ButtonComponent on:click={saveOutputText} text="Save Proverif Result" />
+                <ButtonComponent on:click={openOutputHtml} text="Open Proverif HTML Result" />
+                <ButtonComponent on:click={saveOutputText} text="Save Proverif Text Result" />
             </div>
         {/if}
     </div>
