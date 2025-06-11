@@ -1,16 +1,16 @@
 <script>
-    import ButtonComponent from "$lib/widget/button.svelte";
     import {
-        verificationTypeBoth,
-        verificationTypeText,
-        verificationTypeHtml,
-        verificationTypeNone,
-        checkModelsUploadedNoData,
-        suffixNameInputFile,
-        authExtensionFile,
-        urlHost,
-        errorFileUpload,
+      authExtensionFile,
+      checkModelsUploadedNoData,
+      errorFileUpload,
+      suffixNameInputFile,
+      urlHost,
+      verificationTypeBoth,
+      verificationTypeHtml,
+      verificationTypeNone,
+      verificationTypeText,
     } from "$lib/const";
+    import ButtonComponent from "$lib/widget/button.svelte";
     import { saveAs } from "file-saver";
 
     /** @type {any} */
@@ -127,6 +127,10 @@
         window.open(resultHtml, "_blank");
     }
 
+    function openText() {
+        window.open(resultText, "_blank");
+    }
+
     function save() {
         console.log(resultText);
         var content = resultText;
@@ -210,6 +214,7 @@
             <p><b>Model:</b> {modelName}</p>
             <div class="opResultColumn">
                 <ButtonComponent on:click={open} text="Open HTML Results" />
+                <ButtonComponent on:click={openText} text="Open Text Results" />
                 <ButtonComponent on:click={save} text="Save Text Results" />
             </div>
         {/if}
