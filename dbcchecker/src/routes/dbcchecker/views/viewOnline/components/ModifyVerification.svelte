@@ -154,9 +154,10 @@
     }
 
     function openText() {
-        window.open(resultText, "_blank");
+        var wnd = window.open("about:blank", "_blank");
+        wnd?.document.write('<pre>' + resultText + '</pre>');
     }
-    
+
     function save() {
         console.log(resultText);
         var content = resultText;

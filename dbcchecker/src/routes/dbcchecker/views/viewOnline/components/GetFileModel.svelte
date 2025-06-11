@@ -136,7 +136,8 @@
     }
 
     function openOutputText() {
-        window.open(resultOutputText, "_blank");
+        var wnd = window.open("about:blank", "_blank");
+        wnd?.document.write('<pre>' + resultOutputText + '</pre>');
     }
 
     function saveInputText() {
